@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Funding Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(27, 40, 69, 0.65), rgba(27, 40, 69, 0.75)), url('data:image/jpeg;base64,YOUR_HERO_IMAGE_BASE64');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent 0%, #fff 100%);
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            line-height: 1.2;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 20px;
+        }
+
+        .section-white {
+            background: linear-gradient(to bottom, transparent 0%, #fff 5%, #fff 90%, transparent 100%);
+        }
+        
+        .section-white:first-of-type {
+            background: linear-gradient(to bottom, #fff 0%, #fff 90%, #f5f0e8 100%);
+        }
+        
+        .section-white:nth-of-type(3) {
+            background: linear-gradient(to bottom, #f5f0e8 0%, #fff 10%, #fff 90%, #faf8f4 100%);
+        }
+
+        .section-tan {
+            background: linear-gradient(to bottom, #fff 0%, #f5f0e8 10%, #f5f0e8 90%, #fff 100%);
+            color: #2d2d2d;
+        }
+
+        .section-light-tan {
+            background: linear-gradient(to bottom, #fff 0%, #faf8f4 10%, #faf8f4 90%, #f5f0e8 100%);
+        }
+
+        h2.section-title {
+            font-size: 2.2rem;
+            color: #1B2845;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Three Columns */
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .column-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .column-card h3 {
+            color: #D4AF37;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        /* Background Section - NEW 3-COLUMN LAYOUT */
+        .background-content {
+            display: grid;
+            grid-template-columns: 350px 1fr 280px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .background-left-image {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .background-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .background-text p {
+            margin-bottom: 15px;
+        }
+
+        .background-text ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .background-text li {
+            margin-bottom: 20px;
+            padding-left: 0;
+        }
+
+        .background-text strong {
+            color: #D4AF37;
+        }
+
+        .background-right-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 100%;
+        }
+
+        .background-right-images img {
+            width: 100%;
+            height: calc(50% - 10px);
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Why We Do It Section */
+        .why-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .why-section h4 {
+            color: #1B2845;
+            font-size: 1.3rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* Three Pillars Section */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pillar-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .pillar-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pillar-content {
+            padding: 25px;
+        }
+
+        .pillar-content h3 {
+            color: #1B2845;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f5f0e8;
+            text-align: center;
+            padding: 60px 20px 35px 20px;
+        }
+        
+        .cta-section hr {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section h2 {
+            color: #1B2845;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #1B2845;
+            margin-bottom: 40px;
+        }
+
+        /* Registration Section */
+        .registration {
+            background: #f5f0e8;
+            color: #2d2d2d;
+            text-align: center;
+            padding: 35px 20px 60px 20px;
+        }
+
+        .registration h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #1B2845;
+        }
+
+        .registration p {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            font-size: 1.05rem;
+            color: #2d2d2d;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #D4AF37;
+            color: #1B2845;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #C9A961;
+        }
+
+        .btn-blue {
+            background-color: #1B2845;
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background-color: #0f1a2e;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .background-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .background-left-image {
+                max-height: 400px;
+                min-height: 300px;
+            }
+            
+            .background-right-images {
+                flex-direction: row;
+            }
+            
+            .background-right-images img {
+                width: calc(50% - 10px);
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            h2.section-title {
+                font-size: 1.8rem;
+            }
+            
+            .background-right-images {
+                flex-direction: column;
+            }
+            
+            .background-right-images img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #D4AF37;
+            margin: 0 auto;
+            max-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>College Funding Solutions</h1>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 30px; font-weight: 600;">College Funding Solutions</h1>
+            <h2 style="font-size: 1.8rem; font-weight: 300; line-height: 1.4;">Helping families get the best education</h2>
+            <h2 style="font-size: 1.8rem; font-weight: 300; line-height: 1.4;">for the best price</h2>
+        </div>
+    </section>
+
+    <!-- Why College Breaks Down Section -->
+    <section class="section-white">
+        <div class="container">
+            <h2 class="section-title">Why College Breaks Down To 3 Things</h2>
+            <div class="three-columns">
+                <div class="column-card">
+                    <h3>Essential</h3>
+                    <p>Statistically, students who attend college earn roughly twice as much over their lifetime as those who don't. And those who pursue advanced degrees average nearly eight times the lifetime earnings of someone who never attends college.</p>
+                </div>
+                <div class="column-card">
+                    <h3>Expensive</h3>
+                    <p>This one speaks for itself... we've all watched prices shoot up over the last few years, and sadly, it doesn't look like they're stopping anytime soon.</p>
+                </div>
+                <div class="column-card">
+                    <h3>A Business</h3>
+                    <p>Just as companies compete for top talent, colleges do too. They understand that students from higher-income families who also show strong academic potential are more likely to become successful earners, and in turn, generous alumni donors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Background Section - NEW 3-COLUMN LAYOUT -->
+    <section class="section-tan">
+        <div class="container">
+            <h2 class="section-title">Our Background</h2>
+            <div class="background-content">
+                <!-- Left Column: Library Image -->
+                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=400&h=600&fit=crop" alt="Library" class="background-left-image">
+                
+                <!-- Middle Column: Text Content -->
+                <div class="background-text">
+                    <p>For over 30 years, we've helped families (both parents and students) navigate the college process with confidence. Our mission is to make enrollment simpler, ensure families pay only what they should, and guide students toward a successful, efficient path to graduation.</p>
+                    <p style="margin-top: 20px;">With our experience and proven systems, we've been able to:</p>
+                    <ul>
+                        <li><strong>Boost graduation rates</strong> from roughly 50% for families who don't work with us to <strong>85%</strong> for those who do.</li>
+                        <li><strong>Cut the average time to graduate</strong> from the now "normal" 5.5 years down to <strong>4.5 years</strong>. Saving families an entire year of tuition, housing, and loan/out-of-pocket costs.</li>
+                        <li><strong>Support more than 17,000 families and students</strong> in graduating on time, from the schools they wanted, while keeping more of their hard-earned money in their own pockets instead of overpaying colleges.</li>
+                    </ul>
+                </div>
+                
+                <!-- Right Column: Two Stacked Images -->
+                <div class="background-right-images">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=250&fit=crop" alt="College Planning">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=300&h=250&fit=crop" alt="Students Studying">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why We Do It Section -->
+    <section class="section-white">
+        <div class="container">
+            <h2 class="section-title">Why We Do It</h2>
+            <div class="why-section">
+                <p>For us, it's not about disliking colleges or what they offer. The issue is that colleges have essentially cornered the market. At some point during K–12, most students begin to feel like college is the <em>only</em> option, and as we mentioned earlier, the statistics clearly show the long-term income differences between those who attend and those who don't.</p>
+                
+                <p style="margin-top: 20px;">Now yes, we know college isn't a "do or die" path. But many of us, including many of you reading this, understand the significant impact that higher education can have on someone's life.</p>
+                
+                <p style="margin-top: 20px;">But what really stood out to us over the years wasn't just the rising cost of college, it was hearing family after family say things like: "Our child wants to go to college, so whatever price they give us is what we're going to pay."</p>
+                
+                <p style="margin-top: 20px;">In reality, that's simply not true. There <em>are</em> ways to make sure you're getting a fair price and that you're not overpaying just because a school said so.</p>
+                
+                <p style="margin-top: 30px; font-weight: 600;">A few (of many) ways we help families secure the best possible price for college:</p>
+                
+                <h4>1. Understanding How Pricing and Aid Actually Work</h4>
+                <p>Many families are quick to accept the first price they see without realizing that most schools have some level of flexibility. Knowing which levers to pull, when to pull them, and how they all connect can make a substantial difference.</p>
+
+                <h4>2. Choosing Schools Strategically</h4>
+                <p>Not all colleges price the same, and not all of them offer the same level of financial support. By guiding families toward schools that both fit the student's goals and have a history of providing strong financial aid, we help families position themselves for a better deal.</p>
+
+                <h4>3. Timing and Negotiation</h4>
+                <p>There's a rhythm to the college admissions and financial aid process, and knowing when to submit certain documents, when to appeal, and how to present your family's situation can be the difference between an okay offer and a great one.</p>
+
+                <p style="margin-top: 30px;">We're not suggesting we can get every family a full ride. But what we can guarantee is that you <em>will</em> know that you've taken every step possible to ensure more of your hard-earned money stays with you and not unnecessarily handed over to the institution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Pillars Section -->
+    <section class="section-light-tan">
+        <div class="container">
+            <h2 class="section-title">Academic. Social. Financial.</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 20px;">The Three Pillars of Your Student's College Strategy</p>
+            
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=500&h=300&fit=crop" alt="Academic">
+                    <div class="pillar-content">
+                        <h3>Academic</h3>
+                        <p>Academic readiness is the backbone of a successful college journey. When students understand their strengths and build a thoughtful academic profile, they position themselves for better school matches, stronger acceptance odds, and more financial aid opportunities. <em>To dive deeper please click the "learn more" tab below.</em></p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop" alt="Social">
+                    <div class="pillar-content">
+                        <h3>Social</h3>
+                        <p>Finding the right social and campus fit makes a big difference in how well students do and how happy they are. Plus, it sets them up with friendships and connections that can last a lifetime. At the end of the day, students need the right program and a place that truly feels like home for the next four years. <em>To dive deeper please click the "learn more" tab below.</em></p>
+                    </div>
+                </div>
+
+                <div class="pillar-card">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=300&fit=crop" alt="Financial">
+                    <div class="pillar-content">
+                        <h3>Financial</h3>
+                        <p>This is the pillar where families often feel the most confusion and where the right strategy can sometimes save them tens of thousands of dollars - and no we're not talking about utilizing the classic 529 plan (which is a whole other topic we'll cover in one of our blogs). Overall, college pricing isn't straightforward; it's layered, inconsistent, and often negotiable. We help families take control of the financial side instead of being controlled by it. <em>To dive deeper please click the "learn more" tab below.</em></p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="college-readiness-blog-post.html" target="_blank" class="btn btn-blue">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Clear Guidance Through a Complex Process</h2>
+            <p style="font-size: 1.2rem;">Life is busy enough. Let us help you get the best education at the best price without adding more to your plate.</p>
+            <hr>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration">
+        <div class="container">
+            <h2>Schedule Your Call Below to Determine Your Family's Eligibility</h2>
+            <p><em>Please note: Once you're scheduled, you'll receive an email with a form to fill out. This doesn't lock you into anything. It simply gives us some background on you and your family so we can guide the conversation in the right direction. In that email, you'll also find a helpful resource outlining some of the most common mistakes families make during the college process. Whether we end up working together or not, we want to make sure your family is as informed and confident as possible.</em></p>
+            <hr>
+            <a href="https://meetings-na2.hubspot.com/will-smethurst/college-funding-solutions" class="btn" style="margin-top: 30px;">Reserve Your Time</a>
+        </div>
+    </section>
+</body>
+</html>
